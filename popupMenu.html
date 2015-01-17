@@ -1,0 +1,56 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <meta charset="UTF-8">        <title>Popup menu example</title>
+        <link href="popupMenu.css" rel="stylesheet" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script src="handlebars-v2.0.0.js"></script>
+        <script src="popupMenu.js"></script>
+    </head>
+    <body>
+         <div id="banner">
+            <div id="banner-top">
+                <div style="float: left;">
+                    <img src="Images/weels.png" />
+                    <span>Popup Menu Example</span>
+                </div>
+                <div class="menu-with-search">
+                    <ul>
+
+                        <li class="menuitem invoke_popup_vertically" id="productsMenuItem">
+                            <a href="">Products</a>
+                        </li>
+                        <li class="menuitem">
+                            <a href="">Support</a>
+                        </li>
+                        <li class="menuitem invoke_popup_vertically" id="newsMenuItem">
+                            <a href="">News</a>
+                        </li>
+                        <li class="menuitem" id="helpMenuItem">
+                            <a href="">Help</a>
+                        </li>
+                        <li class="menuitem" id="informationMenuItem">
+                            <a href="">Information</a>
+                        </li>
+                        <li class="menuitem">
+                            <a href="">Log Out</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="body-container">
+
+        </div>
+        <script id="popup-menu-template" type="text/x-handlebars-template">
+            <div class="popup_menu" id="{{popupMenuIdInitial}}{{#if parentInitial}}{{parentInitial}}{{/if}}">
+                <ul>
+                    {{#each items}}
+                        <li class="menuitem{{#if childItems}} invoke_popup{{/if}}{{#if Url}} menulink{{/if}}" {{#if ../parentInitial}}item-hierarchy="{{../../parentInitial}}_{{@index}}"{{else}}item-hierarchy="{{@index}}"{{/if}}{{#if Url}} href-data="{{Url}}"{{/if}}>{{Title}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+        </script>
+    </body>
+</html>
